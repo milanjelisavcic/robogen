@@ -264,7 +264,8 @@ else() ############################## C++ VERSION #####################
 	endif ()
 		# Compiler options
 		if (CMAKE_BUILD_TYPE STREQUAL "Release")
-			add_definitions(-std=c++11 -pedantic -fPIC )
+			add_definitions(-pedantic -fPIC )
+			set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 		else()
 			# Turn on warnings in debug mode
 			add_definitions(-std=c++11 -pedantic -Wno-long-long -Wall -Wextra -Wformat=2
@@ -276,7 +277,7 @@ else() ############################## C++ VERSION #####################
 		set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -ggdb3 -DDEBUG")
 
 		# Release flags
-		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O4 -funroll-loops -finline-functions -fomit-frame-pointer -DNDEBUG")
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -funroll-loops -finline-functions -fomit-frame-pointer -DNDEBUG")
 
 		set(CMAKE_CXX_FLAGS_MINSIZEREL     "-Os -DNDEBUG")
 		set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
